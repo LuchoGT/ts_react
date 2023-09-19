@@ -1,6 +1,9 @@
 import { Header } from "../../../components/organims/Header/Header"
 
-export const PokemonLayout = ({children}):JSX.Element => {
+interface props{
+  children: JSX.Element | JSX.Element[]
+}
+export const PokemonLayout = ({children}:props):JSX.Element => {
   return (
     <div>
         <Header/>

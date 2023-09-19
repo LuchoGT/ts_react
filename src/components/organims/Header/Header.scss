@@ -1,6 +1,4 @@
-$background-principal: #3085C3;
-$background-icon: #FFF;
-$background-icon-hover: #F4E869;
+@import '../../../theme/variables/variables.scss';
 
 .header{
     background-color: $background-principal;
@@ -10,6 +8,7 @@ $background-icon-hover: #F4E869;
         align-items: center;
         width: 100%;
         height: 3rem;
+        background: blue;
         &__left{
             display: flex;
             align-items: center;
@@ -24,14 +23,20 @@ $background-icon-hover: #F4E869;
                 display: none;
             }
         }
-
         &__img{
             fill: $background-icon;
             width: 1.5rem;
             &:hover{
-                fill:$background-icon-hover;
+                // fill:$background-icon-hover;
+                color:red;
                 cursor: pointer;
             }
         }
     }
+}
+
+
+.navbar{
+    background: yellow;
+    height: 10rem;
 }
