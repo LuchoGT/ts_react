@@ -1,32 +1,34 @@
-import { useParams } from "react-router-dom";
+// import { useParams } from "react-router-dom";
+// import { PokemonLayout } from "../layout/PokemonLayout";
+// import './PokemonPage.scss';
+// import { useContext, useEffect, useState } from "react"
+// import { PokemonContext } from "../../../context/PokemonContext";
+
 import { PokemonLayout } from "../layout/PokemonLayout";
-import './PokemonPage.scss';
-import { useContext, useEffect, useState } from "react"
-import { PokemonContext } from "../../../context/PokemonContext";
 
 export const PokemonPage = (): JSX.Element => {
 
-  const { getPokemonById } = useContext(PokemonContext);
+  // const { getPokemonById } = useContext(PokemonContext);
 
-  const [isLoading, setIsLoading] = useState(true);
-  const [pokemon, setPokemon] = useState({})
+  // const [isLoading, setIsLoading] = useState(true);
+  // const [pokemon, setPokemon] = useState({})
 
-  const { id } = useParams();
+  // const { id } = useParams();
 
-  const fetchPokemon = async (id) => {
-    const data = await getPokemonById(id)
-    setPokemon(data)
-    setIsLoading(false)
-  }
+  // const fetchPokemon = async (id) => {
+  //   const data = await getPokemonById(id)
+  //   setPokemon(data)
+  //   setIsLoading(false)
+  // }
 
-  useEffect(() => {
-    fetchPokemon(id)
+  // useEffect(() => {
+  //   fetchPokemon(id)
 
-  }, [])
+  // }, [])
 
   return (
     <PokemonLayout>
-      {
+      {/* {
         isLoading ?
           <p>CARGANDO CTMRE...</p> :
           <>
@@ -102,7 +104,7 @@ export const PokemonPage = (): JSX.Element => {
               </div>
             </div>
           </>
-      }
+      } */}
     </PokemonLayout>
   );
 };

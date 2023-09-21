@@ -1,8 +1,13 @@
-import { PokemonList } from "../../../components/molecules/PokemonList";
+import { useContext } from "react";
+import { PokemonList } from "../../../components/organims/Pokemon/PokemonList";
 import { PokemonLayout } from "../layout/PokemonLayout";
 import './HomePage.scss';
+import { PokemonContext } from "../../../context/PokemonContext";
 
 export const HomePage = (): JSX.Element => {
+
+  const { allPokemons } = useContext(PokemonContext);
+
   return (
     <PokemonLayout>
       <div className="slider">
@@ -37,7 +42,9 @@ export const HomePage = (): JSX.Element => {
           </li>
         </ul>
       </div>
-      <PokemonList/>
+      <PokemonList
+        allPokemons={allPokemons}
+      />
     </PokemonLayout>
   );
 };

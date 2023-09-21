@@ -3,14 +3,16 @@ import { useState, useEffect } from "react";
 
 
 interface props{
-    children: JSX.Element | JSX.Element[]
+    children: JSX.Element | JSX.Element[],
+    name:string,
+    url:string,
 }
 
 
 export const PokemonProvider = ({ children }:props) => {
 
     const [allPokemons, setAllPokemons] = useState<Array<string>>([]);
-    const [offset, setOffset] = useState<number>(0)
+    const [offset, setOffset] = useState<number>(0);
 
 
     const getAllPokemons=async(limit=100)=>{
@@ -20,7 +22,7 @@ export const PokemonProvider = ({ children }:props) => {
         const data = await res.json();
         console.log(data);
 
-        const promises = data.results.map(async(pokemon)=>{
+        const promises = data.results.map(async(pokemon:props)=>{
             const res = await fetch(pokemon.url)
             const data = await res.json()
             return data;
@@ -40,7 +42,7 @@ export const PokemonProvider = ({ children }:props) => {
       
       }, [])
 
-    const getPokemonById = async(id)=>{
+    const getPokemonById = async(id:number)=>{
         const baseURL = 'https://pokeapi.co/api/v2/'
         const res = await fetch(`${baseURL}pokemon/${id}`)
         const data = res.json()
@@ -52,6 +54,7 @@ export const PokemonProvider = ({ children }:props) => {
             value={{
                 allPokemons,
                 getPokemonById,
+                setOffset
             }}>
             {children}
         </PokemonContext.Provider>

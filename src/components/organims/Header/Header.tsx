@@ -4,6 +4,7 @@ import favorite from '../../../assets/icon/favorite.svg'
 import search from '../../../assets/icon/search.svg'
 import user from '../../../assets/icon/user.svg'
 import cart_shop from '../../../assets/icon/cart_shop.svg'
+import { Link } from 'react-router-dom'
 
 export const Header = ():JSX.Element => {
   return (
@@ -26,7 +27,9 @@ export const Header = ():JSX.Element => {
                     <img className='navbar__img' src={cart_shop} alt="" />
                 </figure>
                 <figure className="navbar__figure">
-                    <img className='navbar__img' src={user} alt="" />
+                    <Link to='/auth/login'>
+                        <img className='navbar__img' src={user} alt="" />
+                    </Link>
                 </figure>
             </div>
         </nav>
