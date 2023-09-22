@@ -6,7 +6,7 @@ import './LoginPage.scss'
 export const LoginPage = ():JSX.Element => {
 
   const navigate = useNavigate();
-  const {register,handleSubmit}  = useForm();
+  const {register}  = useForm();
 
   const onLogin=()=>{
     navigate('/',{

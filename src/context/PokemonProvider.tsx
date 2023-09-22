@@ -1,60 +1,42 @@
-import { PokemonContext } from "./PokemonContext"
-import { useState, useEffect } from "react";
+import { IResult } from "../interfaces/interfaces";
+// import { PokeType } from "../interfaces/types";
+import { ContextProps, PokemonContext } from "./PokemonContext"
+import {  useEffect, useState } from "react";
 
 
-interface props{
-    children: JSX.Element | JSX.Element[],
-    name:string,
-    url:string,
-}
+export const PokemonProvider = ({children}:ContextProps)=> {
 
+    const baseURL = "https://pokeapi.co/api/v2/pokemon?limit=10&offset=0";
 
-export const PokemonProvider = ({ children }:props) => {
+    // const defaultState: PokeType = {
+    //     name: "All",
+    //     url: baseURL,
+    //   };
 
-    const [allPokemons, setAllPokemons] = useState<Array<string>>([]);
-    const [offset, setOffset] = useState<number>(0);
-
-
-    const getAllPokemons=async(limit=100)=>{
-        const baseURL = 'https://pokeapi.co/api/v2/'
-
-        const res = await fetch(`${baseURL}pokemon?limit=${limit}&offset=${offset}`)
-        const data = await res.json();
-        console.log(data);
-
-        const promises = data.results.map(async(pokemon:props)=>{
-            const res = await fetch(pokemon.url)
-            const data = await res.json()
-            return data;
-        })
-
-        const results = await Promise.all(promises);
-        console.log(results);
-        setAllPokemons([
-            ...allPokemons,
-            ...results,
-        ])
-        // setIsLoading(false)
-    }
-
-    useEffect(() => {
-        getAllPokemons()
+            
+        // const [allPokemons, setAllPokemons] = useState(null);
+        const [pokemonsFiltered, setPokemonsFiltered] = useState<Array<string>>([]);
+      // const [types, setTypes] = useState([defaultState]);
+ 
+    const getAllPokemons = async () => {
+          const response = await fetch(baseURL);
       
-      }, [])
+          const data = await response.json();
+      
+          const pokemons = data?.results?.map(
+            (pokemon: IResult) => pokemon?.url
+          );
+          setPokemonsFiltered(pokemons);
+      };
 
-    const getPokemonById = async(id:number)=>{
-        const baseURL = 'https://pokeapi.co/api/v2/'
-        const res = await fetch(`${baseURL}pokemon/${id}`)
-        const data = res.json()
-        return data;
-    }
-    
+      useEffect(()=>{
+        getAllPokemons()
+    })
+
     return (
         <PokemonContext.Provider 
             value={{
-                allPokemons,
-                getPokemonById,
-                setOffset
+                pokemonsFiltered,
             }}>
             {children}
         </PokemonContext.Provider>

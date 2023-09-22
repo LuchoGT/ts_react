@@ -3,18 +3,20 @@
 import { CardPokemon } from './CardPokemon';
 import './PokemonList.scss'
 
-interface Props {
-    allPokemons?: string[];
-  }
-export const PokemonList = ({allPokemons}:Props) => {
 
-    
+interface Props {
+    pokemonUrls?: string[] | null;
+}
+  
+export const PokemonList = ({pokemonUrls}:Props) => {
+
+    // const {allPokemons} = useContext(PokemonContext);
     return (
         <div className='pokemonList'>
             {
-                allPokemons?.map((pokemon =>
+                pokemonUrls?.map((pokemon =>
                     <CardPokemon
-                        pokemon={pokemon}
+                        url={pokemon}
                         key={pokemon}
                     />
                 ))

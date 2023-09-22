@@ -8,7 +8,7 @@
         align-items: center;
         width: 100%;
         height: 3rem;
-        background: blue;
+        background: $background-principal;
         &__left{
             display: flex;
             align-items: center;
@@ -24,11 +24,9 @@
             }
         }
         &__img{
-            fill: $background-icon;
-            width: 1.5rem;
+            color: $background-icon;
             &:hover{
-                // fill:$background-icon-hover;
-                color:red;
+                color:$background-icon-hover;
                 cursor: pointer;
             }
         }

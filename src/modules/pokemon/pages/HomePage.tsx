@@ -1,12 +1,12 @@
-import { useContext } from "react";
 import { PokemonList } from "../../../components/organims/Pokemon/PokemonList";
+import { PokemonContext } from "../../../context/PokemonContext";
 import { PokemonLayout } from "../layout/PokemonLayout";
 import './HomePage.scss';
-import { PokemonContext } from "../../../context/PokemonContext";
+import {useContext} from 'react'
 
 export const HomePage = (): JSX.Element => {
 
-  const { allPokemons } = useContext(PokemonContext);
+  const { pokemonsFiltered } = useContext(PokemonContext);
 
   return (
     <PokemonLayout>
@@ -43,7 +43,7 @@ export const HomePage = (): JSX.Element => {
         </ul>
       </div>
       <PokemonList
-        allPokemons={allPokemons}
+      pokemonUrls={pokemonsFiltered}
       />
     </PokemonLayout>
   );
