@@ -1,0 +1,77 @@
+@import '../../../../../theme/variables/variables.scss';
+
+
+.general{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: $background-general-grad;
+    padding: 1rem;
+    .general__container{
+        width: 100%;
+        h1{
+            font-weight: 800;
+            font-size: 1rem;
+            color: $background-header-dash;
+            margin-bottom: 20px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+        .general__profile{
+            box-shadow: 0 0 15px 0 rgba(121,113,137,.1);
+            background: #FFF;
+            margin-bottom: 1.5rem;
+            .general__profile-title{
+                margin: 0;
+                text-transform: uppercase;
+                font-size: .9rem;
+                padding: 1rem;
+            }
+            .general__profile-user{
+                padding: 1rem;
+                border-top: 1px solid #f4f4f6;
+                display: flex;
+                justify-content: space-between;
+            }
+        }
+        .general__wallet{
+            box-shadow: 0 0 15px 0 rgba(121,113,137,.1);
+            background: #FFF;
+            margin-bottom: 1.5rem;
+            h5{
+                font-weight: 800;
+                font-size: .7rem;
+                color: $background-header-dash;
+                letter-spacing: 1px;
+                text-transform: uppercase;
+                padding: 1rem;
+            }
+            p{
+                font-size: 1.5rem;
+                font-weight: 600;
+                border-top: 1px solid #f4f4f6;
+                padding: 1rem;
+            }
+        }
+        .general__shopping{
+            box-shadow: 0 0 15px 0 rgba(121,113,137,.1);
+            background: #FFF;
+            h2{
+                text-transform: uppercase;
+                font-size: .9rem;
+                padding: 1rem;
+            }
+            .general__shopping-container{
+                padding: 1rem;
+                border-top: 1px solid #f4f4f6;
+                .general__shopping-null{
+                    display: flex;
+                    justify-content: flex-start;
+                    background-color: #fff1da;
+                    gap: .5rem;
+                    padding: .5rem;
+                }
+            }
+        }
+    }
+}

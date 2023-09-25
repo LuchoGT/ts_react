@@ -4,8 +4,8 @@
 // import { useContext, useEffect, useState } from "react"
 // import { PokemonContext } from "../../../context/PokemonContext";
 
-import { PokemonLayout } from "../layout/PokemonLayout";
-import { IPokemon } from "../../../interfaces/interfaces";
+import { IPokemon } from "../../../../interfaces/interfaces";
+import { HomeLayout } from "../../layout/HomeLayout";
 import "./PokemonPage.scss";
 interface Props {
   pokemon: IPokemon | null;
@@ -31,7 +31,7 @@ export const PokemonPage = ({ pokemon }: Props): JSX.Element => {
   // }, [])
 
   return (
-    <PokemonLayout>
+    <HomeLayout>
       <main className="mainPokemon">
         <div className="mainPokemon__header">
           <span className="mainPokemon__id">#{pokemon?.id}</span>
@@ -104,6 +104,6 @@ export const PokemonPage = ({ pokemon }: Props): JSX.Element => {
           </div>
         </div>
       </main>
-    </PokemonLayout>
+    </HomeLayout>
   );
 };

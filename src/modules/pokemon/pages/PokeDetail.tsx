@@ -1,5 +1,5 @@
 import { useParams } from "react-router-dom";
-import { PokemonPage } from "./PokemonPage"
+import { PokemonPage } from "./PokemonPage/PokemonPage"
 import { usePokemon } from "../../../hooks/usePokemon";
 
 export const PokeDetail = () => {

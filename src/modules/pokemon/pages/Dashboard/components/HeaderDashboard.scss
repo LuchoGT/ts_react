@@ -1,0 +1,42 @@
+@import '../../../../../theme/variables/variables.scss';
+
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  height: 3rem;
+  background: $background-principal;
+  &__left {
+    display: flex;
+    align-items: center;
+  }
+  &__menu{
+    width: 2rem;
+    color: #FFF;
+  }
+  &__logo{
+    width: 5rem;
+  }
+  &__right {
+    display: flex;
+    align-items: center;
+  }
+ &__list{
+  display: flex;
+  align-items: center;
+ }
+
+ &__user{
+  color: #FFF;
+  font-weight: 600;
+  &--hidden{
+    display: none;
+  }
+ }
+ &__item{
+  width: 2rem;
+  color: #FFF;
+ }
+}

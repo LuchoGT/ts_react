@@ -1,6 +1,6 @@
-import { PokemonList } from "../../../components/organims/Pokemon/PokemonList";
-import { PokemonContext } from "../../../context/PokemonContext";
-import { PokemonLayout } from "../layout/PokemonLayout";
+import { PokemonList } from "../../../../components/organims/Pokemon/PokemonList";
+import { PokemonContext } from "../../../../context/PokemonContext";
+import { HomeLayout } from "../../layout/HomeLayout";
 import './HomePage.scss';
 import {useContext} from 'react'
 
@@ -9,7 +9,7 @@ export const HomePage = (): JSX.Element => {
   const { pokemonsFiltered } = useContext(PokemonContext);
 
   return (
-    <PokemonLayout>
+    <HomeLayout>
       <div className="slider">
         <ul className="slider__list">
           <li className="slider__item">
@@ -45,6 +45,6 @@ export const HomePage = (): JSX.Element => {
       <PokemonList
       pokemonUrls={pokemonsFiltered}
       />
-    </PokemonLayout>
+    </HomeLayout>
   );
 };

@@ -33,6 +33,9 @@ export const PokemonProvider = ({children}:ContextProps)=> {
         getAllPokemons()
     })
 
+  
+
+
     return (
         <PokemonContext.Provider 
             value={{
