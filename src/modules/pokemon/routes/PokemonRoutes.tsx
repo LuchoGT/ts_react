@@ -1,5 +1,5 @@
 import {Routes,Route} from 'react-router-dom'
-import { HomePage } from '../pages/HomePage/HomePage'
+import { HomePage } from '../components/pages/HomePage/HomePage'
 import { PokeDetail } from '../pages/PokeDetail'
 import { Dashboard } from '../pages/Dashboard/Dashboard'
 import { Account } from '../pages/Dashboard/Account/Account'

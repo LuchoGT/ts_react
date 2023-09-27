@@ -1,7 +1,7 @@
 import { Route, Routes } from "react-router-dom"
-import { LoginPage } from "../pages/Login/LoginPage"
-import { RegisterPage } from "../pages/Register/RegisterPage"
-import { LostPassword } from "../pages/LostPassword/LostPassword"
+import { LoginPage } from "../components/pages/Login/LoginPage"
+import { RegisterPage } from "../components/pages/Register/RegisterPage"
+import { LostPassword } from "../components/pages/LostPassword/LostPassword"
 
 export const AuthRoutes = () => {
   return (

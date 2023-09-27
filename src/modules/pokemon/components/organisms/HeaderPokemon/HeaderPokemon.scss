@@ -1,0 +1,114 @@
+@import '../../../../../theme/variables/colors';
+
+.header{
+    background-color: $background-principal;
+    .navbar{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        height: 3rem;
+        background: $background-principal;
+        &__left{
+            display: flex;
+            align-items: center;
+        }
+        &__right{
+            display: flex;
+            align-items: center;
+        }
+        &__figure{
+            padding: .5rem;
+            &--hidden{
+                display: none;
+            }
+        }
+        &__img{
+            color: $background-icon;
+            &--hidden{
+                display: none;
+            }
+            &:hover{
+                color:$background-icon-hover;
+                cursor: pointer;
+            }
+        }
+    }
+}
+
+.hidden{
+    display: none;
+}
+
+.logged__menu{
+    height: 100vh;
+    background: #351183;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    transition: .5s ease;
+    .logged__list{
+        .logged__item{
+            padding: 1rem;
+            display: flex;
+            gap: .5rem;
+            color: #FFF;
+            .logged__image{
+                width: 7rem;
+            }
+            .logged__close{
+                font-size: 2rem;
+                fill: #FFF;
+            }
+            svg{
+                fill: #FFF;
+            }
+            span{
+                margin-left: auto;
+            }
+        }
+        .logged__item--header{
+            display: flex;
+            justify-content: space-between;
+            background: #4618ac;
+            padding: 0.5rem 1rem;
+        }
+    
+    }
+}
+
+.openSearch{
+    padding: .5rem;
+    width: 100%;
+    background: red;
+    display: flex;
+    justify-self: center;
+    align-items: center;
+    padding: 10px 20px;
+    transition: .5s ease;
+    background: #EEEE;
+    position: fixed;
+    top: 0;
+    height: 3rem;
+    &__input{
+        width: 100%;
+        height: 100%;
+        color: #4618ac;
+        // box-shadow: 0 0 10px rgba(0, 0, 0, .3);
+        font-size: 20px;
+        border: none;
+        outline: none;
+        background: transparent;
+    }
+    &__search{
+       color: #FFF;
+    }
+    &__close{
+        color: green;
+    }
+}
+
+

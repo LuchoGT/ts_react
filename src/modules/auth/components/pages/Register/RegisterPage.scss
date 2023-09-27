@@ -1,0 +1,50 @@
+main{
+    .login__welcome{
+        font-size: 2rem;
+        font-weight: 400;
+        &--inactive{
+            display: none;
+        }
+    }
+    .login__container{
+        padding: 1rem 2rem;
+        .login__title{
+            color: #FFF;
+            font-weight: 600;
+            font-size: 1.4rem;
+            &--new{
+                color: #FFF;
+                font-size: .8rem;
+            }
+        }
+        .form{
+            margin-top: 1rem;
+            &__container{
+                margin-top: 1rem;
+                
+            }
+            &__label{
+                color: #FFF;
+                font-weight: 600;
+            }
+            &__input{
+                width: 100%;
+                height: 3rem;
+                padding: 1rem;
+                outline: none;
+            }
+            &__button{
+                background: #fad318;
+                color: #000;
+                width: 100%;
+                border: none;
+                height: 2.5rem;
+                margin-top: 2rem;
+            }
+            .form--lost{
+                text-align: center;
+                margin-top: .5rem;
+            }
+        }
+    }
+}
