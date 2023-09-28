@@ -1,28 +1,39 @@
 import { Link, useNavigate } from "react-router-dom";
-import { useForm } from "react-hook-form";
+import { useForm,SubmitHandler } from "react-hook-form";
 import "./LoginPage.scss";
 import { AuthTemplate } from "../../templates/AuthTemplate";
 
-export const LoginPage = (): JSX.Element => {
+type FormData={
+  email:string,
+  password:string,
+}
+
+interface LoginFormProps {
+  onLogin: () => void;
+}
+export const LoginPage = ({onLogin}:LoginFormProps): JSX.Element => {
+
+
   const navigate = useNavigate();
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm();
+  } = useForm<FormData>();
 
-  // const onLogin=()=>{
-  //   navigate('/',{
-  //     replace: true
-  //   })
-  // }
+  const onSubmit: SubmitHandler<FormData> = (data) => {
+    // Simula el inicio de sesión exitoso y almacena un token en localStorage
+    if (data.email === 'luchito@gmail.com' && data.password === '12345678') {
+      localStorage.setItem('token', 'mi_token_secreto');
+      console.log('Credenciales correctasss!!!');
+      onLogin();
+      navigate('/');
+    } else {
+      // Manejo de errores de inicio de sesión
+      console.error('Credenciales incorrectas');
+    }
+  };
 
-  const onSubmit = handleSubmit((data) => {
-    console.log(data);
-    navigate('/',{
-          replace: true
-        })
-  });
   return (
     <AuthTemplate>
       <main>
@@ -37,7 +48,7 @@ export const LoginPage = (): JSX.Element => {
               <Link to="/auth/register">Crear una cuenta</Link>
             </p>
           </div>
-          <form className="form" onSubmit={onSubmit}>
+          <form className="form" onSubmit={handleSubmit(onSubmit)}>
             <div className="form__container">
               <label className="form__label">Email</label>
               <input
