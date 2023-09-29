@@ -1,33 +1,28 @@
 import {Navigate, Route, Routes} from 'react-router-dom'
 import { PokemonRoutes } from '../modules/pokemon/routes/PokemonRoutes'
 import { AuthRoutes } from '../modules/auth/routes/AuthRoutes'
-import { useState } from 'react';
+import { useAuth } from '@/hooks/useAuth'
 export const AppRouter = () => {
 
 
-  const [authenticated, setAuthenticated] = useState<boolean>(false);
-
-  const handleLogin = () => {
-    setAuthenticated(true);
-  };
-
+  const {isLoggedIn} = useAuth();
 
   return (
     <Routes>
-      {/* {
-        authenticated?
+      <Route path='/*' element={<PokemonRoutes/>}/>
+      {
+        isLoggedIn?
         (
            <Route path='/*' element={<PokemonRoutes/>}/>
         ):
         (
-          <Route path='/auth/*' element={<AuthRoutes handleLogin={handleLogin}/>}/>
+          <Route path='/auth/*' element={<AuthRoutes/>}/>
         )
-      } */}
+      }
 
-    <Route path='/*' element={<PokemonRoutes/>}/>
-    <Route path='/auth/*' element={<AuthRoutes handleLogin={handleLogin}/>}/>
+    {/* <Route path='/auth/*' element={<AuthRoutes/>}/> */}
 
-    <Route path='/*' element={ <Navigate to='/*' />  } />
+    {/* <Route path='/*' element={ <Navigate to='/auth/*' />  } /> */}
     </Routes>
   )
 }

@@ -1,29 +1,42 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
-type AuthStatus = "authenticated" | "unauthenticated" | "loading";
 
 export const useAuth = () => {
-  const [authStatus, setAuthStatus] = useState<AuthStatus>("loading");
-  const navigate = useNavigate();
 
-  const login = async (email: string, password: string) => {
-    // Simula una solicitud de inicio de sesión exitosa
-    if (email === "luchito@gmail.com" && password === "12345678") {
-      localStorage.setItem("token", "mi_token_secreto");
-      setAuthStatus("authenticated");
-      console.log("Credenciales correctass!!");
-      navigate("/");
-    } else {
-      // Manejo de errores de inicio de sesión
-      console.log("Credenciales incorrectas");
-      setAuthStatus("unauthenticated");
-    }
-  };
+    const [isLoggedIn, setIsLoggedIn] = useState<boolean>(() => {
+        // Verifica si hay un usuario autenticado en el localStorage al cargar la página.
+        return !!localStorage.getItem('isLoggedIn');
+      });
+    
+      const onLogin = (email:string, password:string) => {
+        // Simula el inicio de sesión exitoso y almacena un token en localStorage
+        if (email === 'probando123@gmail.com' && password === '12345678') {
+          setIsLoggedIn(true);
+          const token = 'mi_token_secreto'; // Obtén el token de autenticación
+        //   const emails = email; // Obtén el nombre de usuario desde el token o de donde corresponda
+          localStorage.setItem('token', token);
+          localStorage.setItem('email', email);
+          localStorage.setItem('isLoggedIn', 'true');
+        //   navigate('/');
+          console.log('Credenciales correctasss!!!');
+        } else {
+          // Manejo de errores de inicio de sesión
+          console.error('Credenciales incorrectas');
+        }
+      };
 
-  const logout = () => {
-    localStorage.removeItem("token");
-    setAuthStatus("unauthenticated");
-  };
+      const onLogout = () => {
+        setIsLoggedIn(false);
+        // Elimina el estado de inicio de sesión y el nombre de usuario de localStorage al cerrar sesión.
+        localStorage.removeItem('isLoggedIn');
+        localStorage.removeItem('email');
+        console.log('Adios usuario');
+        
+      };
+    
 
-  return { authStatus, login, logout };
+      return{
+        isLoggedIn,
+        onLogin,
+        onLogout,
+      }
 };

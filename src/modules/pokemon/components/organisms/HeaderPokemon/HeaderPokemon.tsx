@@ -8,7 +8,7 @@ import { SearchIcon } from "@/assets/icon/SearchIcon";
 import { WishlistIcon } from "@/assets/icon/WishlistIcon";
 import { MenuLogged } from "../MenuLogged/MenuLogged";
 import { useHeaderPokemon } from "./useHeaderPokemon";
-import { useEffect, useState } from "react";
+import { useAuth } from "@/hooks/useAuth";
 
 export const HeaderPokemon = (): JSX.Element => {
   const { isMenuLoginOpen, openMenuLogin, closeMenuLogin } = useHeaderPokemon();
@@ -22,30 +22,12 @@ export const HeaderPokemon = (): JSX.Element => {
   // console.log(user);
 
   const navigate = useNavigate();
-  //   const onLogout = () => {
-  //     // logout();
-  //     navigate('/auth/login', {
-  //         replace: true
-  //     });
-  // }
 
-  const [loggedIn, setLoggedIn] = useState<boolean>(false);
-
-  useEffect(() => {
-    const token = localStorage.getItem("token");
-    if (token) {
-      setLoggedIn(true);
-    }
-  }, []);
+  const {isLoggedIn,onLogout} = useAuth()
 
   const handleLogout = () => {
-    // Elimina el token de localStorage al cerrar sesión
-    localStorage.removeItem("token");
-    localStorage.removeItem("email");
-    setLoggedIn(false);
-    navigate('/auth/login', {
-      replace: true
-  });
+    onLogout(); 
+    navigate('/*')   
   };
 
   const email = localStorage.getItem("email") || "";
@@ -69,7 +51,7 @@ export const HeaderPokemon = (): JSX.Element => {
           <figure className="navbar__figure">
             <CartIcon />
           </figure>
-          {loggedIn ? (
+          {isLoggedIn ? (
             <figure className="navbar__figure" onClick={() => openMenuLogin()}>
               <UserIcon />
             </figure>

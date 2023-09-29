@@ -2,40 +2,33 @@ import { Link, useNavigate } from "react-router-dom";
 import { useForm,SubmitHandler } from "react-hook-form";
 import "./LoginPage.scss";
 import { AuthTemplate } from "../../templates/AuthTemplate";
+import { useAuth } from "@/hooks/useAuth";
 
 type FormData={
   email:string,
   password:string,
 }
 
-interface LoginFormProps {
-  onLogin: () => void;
-}
-export const LoginPage = ({onLogin}:LoginFormProps): JSX.Element => {
 
+export const LoginPage = (): JSX.Element => {
 
   const navigate = useNavigate();
+
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm<FormData>();
 
+  const {onLogin} = useAuth();
+
+
   const onSubmit: SubmitHandler<FormData> = (data) => {
-    // Simula el inicio de sesión exitoso y almacena un token en localStorage
-    if (data.email === 'probando123@gmail.com' && data.password === '12345678') {
-      const token = 'mi_token_secreto'; // Obtén el token de autenticación
-      const email = data.email; // Obtén el nombre de usuario desde el token o de donde corresponda
-      localStorage.setItem('token', token);
-      console.log('Credenciales correctasss!!!');
-      localStorage.setItem('email', email);
-      onLogin();
-      navigate('/');
-    } else {
-      // Manejo de errores de inicio de sesión
-      console.error('Credenciales incorrectas');
-    }
+    onLogin(data.email,data.password);  
+    navigate('/');  
   };
+
+  
 
   return (
     <AuthTemplate>

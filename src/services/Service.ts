@@ -5,7 +5,7 @@ class Service {
 
   protected http: AxiosInstance;
 
-  protected baseUrl: any = Constants.APP_API_URL;
+  protected baseUrl: string = Constants.APP_API_URL;
 
   protected headers: Record<string, string> = {
     'Content-Type': 'application/json',
