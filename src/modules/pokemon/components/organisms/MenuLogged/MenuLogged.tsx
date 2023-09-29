@@ -4,9 +4,10 @@ interface props{
     isMenuLoginOpen: boolean,
     closeMenuLogin:()=>void,
     handleLogout:()=>void,
+    email:string
 }
 
-export const MenuLogged = ({isMenuLoginOpen,closeMenuLogin,handleLogout}:props) => {
+export const MenuLogged = ({isMenuLoginOpen,closeMenuLogin,handleLogout,email}:props) => {
 
   return (
     <div className={`${isMenuLoginOpen ? "logged__menu" : "hidden"}`}>
@@ -22,7 +23,7 @@ export const MenuLogged = ({isMenuLoginOpen,closeMenuLogin,handleLogout}:props) 
             </svg>
           </div>
         </li>
-        <li className="logged__item">Luchito</li>
+        <li className="logged__item">Hola, {email}</li>
         <li className="logged__item">
           <svg
             xmlns="http://www.w3.org/2000/svg"

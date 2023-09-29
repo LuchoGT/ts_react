@@ -1,8 +1,10 @@
-import {Routes,Route} from 'react-router-dom'
+import {Routes,Route, Navigate} from 'react-router-dom'
 import { HomePage } from '../components/pages/HomePage/HomePage'
 import { PokeDetail } from '../pages/PokeDetail'
 import { Dashboard } from '../pages/Dashboard/Dashboard'
 import { Account } from '../pages/Dashboard/Account/Account'
+
+
 export const PokemonRoutes = ():JSX.Element => {
   return (
     <Routes>
@@ -11,6 +13,8 @@ export const PokemonRoutes = ():JSX.Element => {
         <Route path='dashboard' element={<Dashboard/>}>
           <Route path='/dashboard/account' element={<Account/>}/>
         </Route>
+
+        <Route path="/*" element={ <Navigate to="/" /> } />
     </Routes>
   )
 }

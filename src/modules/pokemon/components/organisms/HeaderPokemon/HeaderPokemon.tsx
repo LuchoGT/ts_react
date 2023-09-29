@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "./HeaderPokemon.scss";
 // import { useLoginPage } from "@/modules/auth/components/pages/Login/useLoginPage";
 import { MenuIcon } from "@/assets/icon/MenuIcon";
@@ -21,7 +21,7 @@ export const HeaderPokemon = (): JSX.Element => {
   // const {user,logout} = useLoginPage();
   // console.log(user);
 
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
   //   const onLogout = () => {
   //     // logout();
   //     navigate('/auth/login', {
@@ -29,42 +29,35 @@ export const HeaderPokemon = (): JSX.Element => {
   //     });
   // }
 
-  const [loggedIn, setLoggedIn] = useState<boolean>(false)
+  const [loggedIn, setLoggedIn] = useState<boolean>(false);
 
   useEffect(() => {
-    const token = localStorage.getItem('token');
+    const token = localStorage.getItem("token");
     if (token) {
       setLoggedIn(true);
     }
-  
-  }, [])
-  
+  }, []);
+
   const handleLogout = () => {
     // Elimina el token de localStorage al cerrar sesión
-    localStorage.removeItem('token');
+    localStorage.removeItem("token");
+    localStorage.removeItem("email");
     setLoggedIn(false);
+    navigate('/auth/login', {
+      replace: true
+  });
   };
+
+  const email = localStorage.getItem("email") || "";
 
   return (
     <header className="header">
       <nav className="navbar">
         <div className="navbar__left">
-          <figure className="navbar__figure" onClick={() => openMenuLogin()}>
+          <figure className="navbar__figure">
             <MenuIcon />
           </figure>
-          {
-            loggedIn ?
-           ( <MenuLogged
-              isMenuLoginOpen={isMenuLoginOpen}
-              closeMenuLogin={closeMenuLogin}
-              handleLogout={handleLogout}
-            />):
-            (
-              <h2>INICIA SESION CTMRE</h2>
-            )
-
-          }
-          <p>Luchito Store</p>
+          <p>{email} Store</p>
         </div>
         <div className="navbar__right">
           <figure className="navbar__figure navbar__figure--hidden">
@@ -76,11 +69,23 @@ export const HeaderPokemon = (): JSX.Element => {
           <figure className="navbar__figure">
             <CartIcon />
           </figure>
-          <figure className="navbar__figure">
-            <Link to="/auth/login">
+          {loggedIn ? (
+            <figure className="navbar__figure" onClick={() => openMenuLogin()}>
               <UserIcon />
-            </Link>
-          </figure>
+            </figure>
+          ) : (
+            <figure className="navbar__figure">
+              <Link to="/auth/login">
+                <UserIcon />
+              </Link>
+            </figure>
+          )}
+          <MenuLogged
+            isMenuLoginOpen={isMenuLoginOpen}
+            closeMenuLogin={closeMenuLogin}
+            handleLogout={handleLogout}
+            email={email}
+          />
         </div>
       </nav>
 

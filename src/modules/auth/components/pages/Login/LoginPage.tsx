@@ -23,9 +23,12 @@ export const LoginPage = ({onLogin}:LoginFormProps): JSX.Element => {
 
   const onSubmit: SubmitHandler<FormData> = (data) => {
     // Simula el inicio de sesión exitoso y almacena un token en localStorage
-    if (data.email === 'luchito@gmail.com' && data.password === '12345678') {
-      localStorage.setItem('token', 'mi_token_secreto');
+    if (data.email === 'probando123@gmail.com' && data.password === '12345678') {
+      const token = 'mi_token_secreto'; // Obtén el token de autenticación
+      const email = data.email; // Obtén el nombre de usuario desde el token o de donde corresponda
+      localStorage.setItem('token', token);
       console.log('Credenciales correctasss!!!');
+      localStorage.setItem('email', email);
       onLogin();
       navigate('/');
     } else {
